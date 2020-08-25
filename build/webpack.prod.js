@@ -1,9 +1,8 @@
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
 
 module.exports = merge(common, {
     mode: 'production',
@@ -16,12 +15,12 @@ module.exports = merge(common, {
                     ecma: 6,
                     sourceMap: false,
                     output: {
-                        comments: false
-                    }
+                        comments: false,
+                    },
                 },
-                extractComments: false
+                extractComments: false,
             }),
-            new OptimizeCSSAssetsPlugin({})
+            new OptimizeCSSAssetsPlugin({}),
         ],
         splitChunks: {
             chunks: 'all',
